@@ -102,8 +102,8 @@ nav:
       - 'Time Series':
           - Introduction: ML/Time_Series/README.md
           - Features: ML/Time_Series/Features.md
-      - 'Deep Learning': Deep_Learning/README.md
-      - 'Reinforcement Learning': Reinforcement_Learning/README.md
+      - 'Deep Learning': ML/Deep_Learning/README.md
+      - 'Reinforcement Learning': ML/Reinforcement_Learning/README.md
       - 'Appendix': ML/Appendix/Programming/Python/README.md
 
 repo_url: https://github.com/GAmaranathaReddy/ai-learning
