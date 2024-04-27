@@ -8,11 +8,6 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.9"
 
-[[tool.poetry.source]]
-name = "hyperspace"
-url = "https://int.repositories.cloud.sap/artifactory/api/pypi/proxy-deploy-releases-hyperspace-pypi/simple"
-priority = "supplemental"
-
 
 [[tool.poetry.source]]
 name = "PyPI"
