@@ -29,19 +29,88 @@ markdown_extensions:
   - pymdownx.superfences
 
 nav:
-  - "Main Page": index.md
-  - "Statistics": statistics/wip.md
-  - "Maths": maths/wip.md
-  - "Classification": classification/wip.md
-  - "Regression": regression/wip.md
-  - "Deeplearning": deeplearning/wip.md
-  - "NLP": nlp/wip.md
+  - 'Main Page': index.md
+  - 'Statistics': statistics/wip.md
+  - 'Maths': maths/wip.md
+  - 'ML':
+      - 'Introduction': ML/README.md
+      - 'Prerequisites':
+          - Linear Algebra: ML/Prerequisites/LinearAlgebra.md
+          - Statistics: ML/Prerequisites//Statistics.md
+          - Types of Data: ML/Prerequisites//TypesOfData.md
+      - 'Classification':
+          - Introduction: ML/Classification/README.md
+          - Logistic Regression: ML/Classification/LogisticRegression.md
+          - K-Nearest Neighbours: ML/Classification/knn.md
+          - Support Vector Machines: ML/Classification/SupportVectorMachines.md
+          - Naive Bayes: ML/Classification/NaiveBayes.md
+          - Decision Tree Classification: ML/Classification/DecisionTree.md
+          - Random Forest Classification: ML/Classification/RandomForest.md
+          - Stochastic Gradient Descent Classifier (SGD): ML/Classification/sgd.md
+          - Gaussian Process Classification (GPC): ML/Classification/gpc.md
+          - Gradient Boosting Classifier: ML/Classification/gbc.md
+          - AdaBoost Classifier: ML/Classification/adaboost.md
+          - Bagging Classifier: ML/Classification/bagging.md
+          - Extra Trees Classifier: ML/Classification/extra_tree.md
+          - Passive Aggressive Classifier: ML/Classification/passive_aggre.md
+          - Ridge Classifier: ML/Classification/ridge.md
+      - 'Regression':
+          - Introduction: ML/Regression/README.md
+          - Linear Regression: ML/Regression/linear_regression.md
+          - Logistic Regression: ML/Regression/logistic_regression.md
+          - Polynomial Regression: ML/Regression/polynomial_regression.md
+          - Stepwise Regression: ML/Regression/stepwise_regression.md
+          - Ridge Regression: ML/Regression/ridge_regression.md
+          - Lasso Regression: ML/Regression/lasso_regression.md
+          - ElasticNet Regression: ML/Regression/elasticNet_regression.md
+          - Support Vector Regression: ML/Regression/sv_regression.md
+          - Decision Tree Regression: ML/Regression/decisiontree_regression.md
+          - Random Forest Regression: ML/Regression/random_forest_regression.md
+          - Gradient Boosting & AdaBoost: ML/Regression/gradient_adaboost_regression.md
+          - XGBoost Regression: ML/Regression/xgboost_regression.md
+          - Bayesian Linear Regression: ML/Regression/bayesian_regression.md
+          - Generalized Linear Model (GLM): ML/Regression/general_linear_regression.md
+          - Poisson Regression: ML/Regression/poisson_regression.md
+          - Negative Binomial Regression: ML/Regression/negative_binomial_regression.md
+          - Cox Regression: ML/Regression/cox_regression.md
+          - Multivariate Adaptive Regression Splines (MARS): ML/Regression/mars_regression.md
+          - Robust Regression: ML/Regression/robust_regression.md
+          - Principal Components Regression (PCR): ML/Regression/pcr_regression.md
+          - Partial Least Squares (PLS) Regression: ML/Regression/pls_regression.md
+          - Tweedie Regression: ML/Regression/tweedie_regression.md
+          - Quantile Regression: ML/Regression/quantile_regression.md
+          - Neural Network Regression: ML/Regression/neural_network_regression.md
+          - SVR (Support Vector Regression): ML/Regression/sv_regression.md
+          - Stochastic Gradient Descent Regression: ML/Regression/stochastic_regression.md
+          - k-Nearest Neighbors Regression: ML/Regression/knn_regression.md
+          - LightGBM Regression: ML/Regression/lightgbm_regression.md
+          - CatBoost Regression: ML/Regression/catboost_regression.md
+      - 'Clustering':
+          - Introduction: ML/Clustering/README.md
+          - K-Means Clustering: ML/Clustering/K-meansClustering.md
+          - Hierarchical Clustering: ML/Clustering/HierarchicalClustering.md
+          - Gaussian Mixture Models: ML/Clustering/GaussianMixtureModels.md
+      - 'Dimensionality Reduction':
+          - Introduction: ML/Dimensionality_Reduction/README.md
+          - Principal Component Analysis: ML/Dimensionality_Reduction/PrincipalComponentAnalysis.md
+      - 'Model Selection':
+          - Introduction: ML/Model_Selection/README.md
+      - 'Ensemble Learning':
+          - Introduction: ML/Ensemble_Learning/README.md
+      - 'Natural Language Processing':
+          - Introduction: ML/Natural_Language_Processing/README.md
+      - 'Time Series':
+          - Introduction: ML/Time_Series/README.md
+          - Features: ML/Time_Series/Features.md
+      - 'Deep Learning': Deep_Learning/README.md
+      - 'Reinforcement Learning': Reinforcement_Learning/README.md
+      - 'Appendix': ML/Appendix/Programming/Python/README.md
 
 repo_url: https://github.com/GAmaranathaReddy/ai-learning
-repo_name: G AmaranathaReddy/ai-learning
+repo_name: GAmaranathaReddy/ai-learning
 edit_uri: /edit/main/docs/
 
-site_url: !!python/object/apply:os.getenv ["GITHUB_PAGES_URL", ""]
+site_url: !!python/object/apply:os.getenv ['GITHUB_PAGES_URL', '']
 
 plugins:
   - search
@@ -49,11 +118,11 @@ plugins:
       enable_creation_date: true
       type: custom
       timezone: UTC
-      custom_format: "%Y-%m-%d %H:%M:%S %Z"
+      custom_format: '%Y-%m-%d %H:%M:%S %Z'
       fallback_to_build_date: true
   - git-authors
   - tags:
       tags_file: tags.md
 
 watch:
-  - "doc_themes"
+  - 'doc_themes'
