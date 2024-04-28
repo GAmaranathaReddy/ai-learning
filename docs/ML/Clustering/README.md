@@ -15,6 +15,5 @@ In real world, data does not always come with labels and in such cases, we need 
 | [Affinity Propagation](./affinity-propagation.md)                                  | Graph-Based    | - Does not require the number of clusters to be specified<br>- Sends messages between pairs of samples                 |
 | [Agglomerative Clustering](./agglomerative.md)                                     | Hierarchical   | - A type of hierarchical clustering<br>- Uses a bottom-up approach                                                     |
 | [BIRCH (Balanced Iterative Reducing and Clustering using Hierarchies)](./birch.md) | Hierarchical   | - Designed for very large datasets<br>- Builds a tree-like structure to cluster                                        |
-| [Gaussian Mixture Models (GMM)](/GaussianMixtureModels.md)                         | Model-Based    | - Soft clustering (provides probabilities of cluster assignments)<br>- Assumes clusters follow a Gaussian distribution |
 
 Note that this is not an exhaustive list, and there are many other clustering algorithms and variations thereof. Each algorithm has its own set of parameters and assumptions that can affect its performance on different datasets.
