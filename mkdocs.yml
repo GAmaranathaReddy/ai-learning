@@ -89,6 +89,13 @@ nav:
           - Introduction: ML/Clustering/README.md
           - K-Means Clustering: ML/Clustering/K-meansClustering.md
           - Hierarchical Clustering: ML/Clustering/HierarchicalClustering.md
+          - DBSCAN: ML/Clustering/DBSCAN.md
+          - Mean Shift: ML/Clustering/MeanShift.md
+          - OPTICS (Ordering Points To Identify the Clustering Structure): ML/Clustering/OPTICS.md
+          - Affinity Propagation: ML/Clustering/affinity-propagation.md
+          - Spectral Clustering: ML/Clustering/Spectral.md
+          - Agglomerative Clustering: ML/Clustering/agglomerative.md
+          - BIRCH (Balanced Iterative Reducing and Clustering using Hierarchies): ML/Clustering/BIRCH.md
           - Gaussian Mixture Models: ML/Clustering/GaussianMixtureModels.md
       - 'Dimensionality Reduction':
           - Introduction: ML/Dimensionality_Reduction/README.md
