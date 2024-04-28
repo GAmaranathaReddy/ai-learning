@@ -30,6 +30,9 @@ markdown_extensions:
 
 nav:
   - 'Main Page': index.md
+  - 'Python':
+      - keywords: python/keywords.md
+      - datatypes: python/datatypes.md
   - 'Statistics': statistics/wip.md
   - 'Maths': maths/wip.md
   - 'ML':
