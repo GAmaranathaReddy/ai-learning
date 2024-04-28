@@ -95,7 +95,7 @@ nav:
           - Affinity Propagation: ML/Clustering/affinity-propagation.md
           - Spectral Clustering: ML/Clustering/Spectral.md
           - Agglomerative Clustering: ML/Clustering/agglomerative.md
-          - BIRCH (Balanced Iterative Reducing and Clustering using Hierarchies): ML/Clustering/BIRCH.md
+          - BIRCH (Balanced Iterative Reducing and Clustering using Hierarchies): ML/Clustering/birch.md
           - Gaussian Mixture Models: ML/Clustering/GaussianMixtureModels.md
       - 'Dimensionality Reduction':
           - Introduction: ML/Dimensionality_Reduction/README.md
