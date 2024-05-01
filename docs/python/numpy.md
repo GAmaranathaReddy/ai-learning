@@ -1,3 +1,5 @@
+# Python Cheat Sheet - Numpy
+
 | Name                                 | Description                                                                                                                | Example                                                                                              |
 | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | `a.shape`                            | The shape attribute of NumPy array a keeps a tuple of integers. Each integer describes the number of elements of the axis. | `a = np.array([[1,2],[1,1],[0,0]])`<br>`print(np.shape(a)) # (3, 2)`                                 |
