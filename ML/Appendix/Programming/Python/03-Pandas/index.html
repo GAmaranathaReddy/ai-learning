@@ -1,0 +1,3247 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.20">
+    
+    
+      
+        <title>Pandas - AI Platform Models Cookbook</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.66ac8b77.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+  
+  
+    
+    
+  
+  
+  <style>:root{--md-admonition-icon--info:url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M256 512a256 256 0 1 0 0-512 256 256 0 1 0 0 512zm-40-176h24v-64h-24c-13.3 0-24-10.7-24-24s10.7-24 24-24h48c13.3 0 24 10.7 24 24v88h8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-80c-13.3 0-24-10.7-24-24s10.7-24 24-24zm40-208a32 32 0 1 1 0 64 32 32 0 1 1 0-64z"/></svg>');}</style>
+
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pandas" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="AI Platform Models Cookbook" class="md-header__button md-logo" aria-label="AI Platform Models Cookbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AI Platform Models Cookbook
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Pandas
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/GAmaranathaReddy/ai-learning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GAmaranathaReddy/ai-learning
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="AI Platform Models Cookbook" class="md-nav__button md-logo" aria-label="AI Platform Models Cookbook" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    AI Platform Models Cookbook
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/GAmaranathaReddy/ai-learning" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GAmaranathaReddy/ai-learning
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Main Page
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Python
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Python
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../python/keywords/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    keywords
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../python/datatypes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    datatypes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../python/classes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    classes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../python/functions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    functions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../python/numpy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    numpy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../python/objectorient/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    object orientation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../python/interview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    interview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../statistics/wip/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Statistics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../maths/wip/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Maths
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ML
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            ML
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Prerequisites
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            Prerequisites
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Prerequisites/LinearAlgebra/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linear Algebra
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Prerequisites/Statistics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Statistics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Prerequisites/TypesOfData/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Types of Data
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Classification
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Classification
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Classification/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Classification/LogisticRegression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logistic Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Classification/knn/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K-Nearest Neighbours
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Classification/SupportVectorMachines/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Support Vector Machines
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Classification/NaiveBayes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Naive Bayes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Classification/DecisionTree/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Decision Tree Classification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Classification/RandomForest/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Random Forest Classification
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Classification/sgd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stochastic Gradient Descent Classifier (SGD)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Classification/gpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gaussian Process Classification (GPC)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Classification/gbc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gradient Boosting Classifier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Classification/adaboost/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AdaBoost Classifier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Classification/bagging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bagging Classifier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Classification/extra_tree/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Extra Trees Classifier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Classification/passive_aggre/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Passive Aggressive Classifier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Classification/ridge/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ridge Classifier
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Regression
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Regression
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/linear_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Linear Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/logistic_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logistic Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/polynomial_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Polynomial Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/stepwise_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stepwise Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/ridge_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ridge Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/lasso_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Lasso Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/elasticNet_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ElasticNet Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/sv_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Support Vector Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/decisiontree_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Decision Tree Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/random_forest_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Random Forest Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/gradient_adaboost_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Gradient Boosting & AdaBoost
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/xgboost_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    XGBoost Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/bayesian_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bayesian Linear Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/general_linear_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Generalized Linear Model (GLM)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/poisson_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Poisson Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/negative_binomial_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Negative Binomial Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/cox_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cox Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/mars_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Multivariate Adaptive Regression Splines (MARS)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/robust_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Robust Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/pcr_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Principal Components Regression (PCR)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/pls_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Partial Least Squares (PLS) Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/tweedie_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tweedie Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/quantile_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quantile Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/neural_network_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Neural Network Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/sv_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Support Vector Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/stochastic_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stochastic Gradient Descent Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/knn_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    k-Nearest Neighbors Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/lightgbm_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    LightGBM Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Regression/catboost_regression/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CatBoost Regression
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Clustering
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            Clustering
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Clustering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Clustering/K-meansClustering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    K-Means Clustering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Clustering/HierarchicalClustering/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hierarchical Clustering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Clustering/DBSCAN/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    DBSCAN
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Clustering/MeanShift/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Mean Shift
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Clustering/OPTICS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    OPTICS (Ordering Points To Identify the Clustering Structure)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Clustering/affinity-propagation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Affinity Propagation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Clustering/Spectral/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Spectral Clustering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Clustering/agglomerative/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Agglomerative Clustering
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Clustering/birch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BIRCH (Balanced Iterative Reducing and Clustering using Hierarchies)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_6" id="__nav_5_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Dimensionality Reduction
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_6">
+            <span class="md-nav__icon md-icon"></span>
+            Dimensionality Reduction
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Dimensionality_Reduction/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Dimensionality_Reduction/PrincipalComponentAnalysis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Principal Component Analysis
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_7" id="__nav_5_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Model Selection
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_7">
+            <span class="md-nav__icon md-icon"></span>
+            Model Selection
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Model_Selection/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_8" id="__nav_5_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Ensemble Learning
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_8">
+            <span class="md-nav__icon md-icon"></span>
+            Ensemble Learning
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Ensemble_Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_9" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_9" id="__nav_5_9_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Natural Language Processing
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_9">
+            <span class="md-nav__icon md-icon"></span>
+            Natural Language Processing
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Natural_Language_Processing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_10" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_10" id="__nav_5_10_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Time Series
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_10">
+            <span class="md-nav__icon md-icon"></span>
+            Time Series
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Time_Series/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Time_Series/Features/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Features
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Deep_Learning/README.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Deep Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../Reinforcement_Learning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Reinforcement Learning
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Appendix
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-pandas-dataframe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating a Pandas Dataframe
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a Pandas Dataframe">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-dictionaries" class="md-nav__link">
+    <span class="md-ellipsis">
+      From Dictionaries
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="From Dictionaries">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#assigning-row-labels" class="md-nav__link">
+    <span class="md-ellipsis">
+      Assigning row labels
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-lists" class="md-nav__link">
+    <span class="md-ellipsis">
+      From Lists
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="From Lists">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#broadcasting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Broadcasting
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-and-importing-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Reading and Importing Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Reading and Importing Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#from-csvs" class="md-nav__link">
+    <span class="md-ellipsis">
+      From CSVs
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="From CSVs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chunkwise-loading" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chunkwise loading
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#globbing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Globbing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-urls" class="md-nav__link">
+    <span class="md-ellipsis">
+      From URLs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-excel" class="md-nav__link">
+    <span class="md-ellipsis">
+      From Excel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-hdf5-hierarchical-data-format-version5" class="md-nav__link">
+    <span class="md-ellipsis">
+      From HDF5 (Hierarchical Data Format version5)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-pickles" class="md-nav__link">
+    <span class="md-ellipsis">
+      From Pickles
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#from-sql" class="md-nav__link">
+    <span class="md-ellipsis">
+      From SQL
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exporting-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exporting Data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#selecting-and-index-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Selecting and Index Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Selecting and Index Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#column-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Column Selection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#slicing-for-row-selection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slicing for Row Selection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#loc-and-iloc" class="md-nav__link">
+    <span class="md-ellipsis">
+      Loc and iLoc
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#filtering" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filtering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#iterations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Iterations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Iterations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#columns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Columns
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rows" class="md-nav__link">
+    <span class="md-ellipsis">
+      Rows
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#manipulating-dataframes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manipulating Dataframes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exploring-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exploring Data
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#time-series-with-pandas" class="md-nav__link">
+    <span class="md-ellipsis">
+      Time Series with Pandas
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Time Series with Pandas">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#moving-averages" class="md-nav__link">
+    <span class="md-ellipsis">
+      Moving Averages
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="pandas">Pandas</h1>
+<p>The high level data manipulation tool used by data scientists. It can be imported with the syntax <code>import pandas as pd</code>.</p>
+<h2 id="creating-a-pandas-dataframe">Creating a Pandas Dataframe</h2>
+<h3 id="from-dictionaries">From Dictionaries</h3>
+<p>There are multiple ways to create a Pandas dataframe, the commonly used one is to create it from a dictionary by setting a key for every column label and a the value to be a list of observations of that label for each column. Then simply calling <code>pd.DataFrame(dict)</code> would create the data frame. </p>
+<h4 id="assigning-row-labels">Assigning row labels</h4>
+<p>This can be done by using the syntax <code>df.index = ['label1', 'label2', ... 'labeln']</code> for <strong>n</strong> observations that exist in the dataframe.</p>
+<h3 id="from-lists">From Lists</h3>
+<p>If we are to create a DataFrame from two conforming lists that are defined as follows, we would need to use the <code>list</code> and <code>zip</code> functions.</p>
+<div class="highlight"><pre><span></span><code><span class="n">labels</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;n1&#39;</span><span class="p">,</span> <span class="s1">&#39;n2&#39;</span><span class="p">]</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+</code></pre></div>
+<ol>
+<li>We would first need to create a list of lists like <code>list_columns = [x, y]</code></li>
+<li>Then we would need create a list after element-wise zipping of the columns with their labels, as shown in <code>z = list(zip(labels, list_columns))</code></li>
+<li>This will now need to be converted into a dictionary which would have column names (<code>labels</code>) and columns (<code>z</code>) using <code>data = dict(z)</code></li>
+<li>After this, we use the method defined above for dictionaries, i.e. <code>pd.DataFrame(data)</code> to create a DataFrame.</li>
+</ol>
+<h4 id="broadcasting">Broadcasting</h4>
+<p>It is the concept of <strong>recycling</strong> from R, that is called <strong>broadcasting</strong> in Python. The idea is, that a particular value can be recycled and used to fill all the other observations, if unsuitable number of details have been provided.</p>
+<p><div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="n">x</span><span class="p">,</span> <span class="s1">&#39;is_int&#39;</span><span class="p">:</span> <span class="s1">&#39;Yes&#39;</span><span class="p">}</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+</code></pre></div>
+would return a DataFrame with two columns, the column containing <code>Yes</code> thrice. </p>
+<h2 id="reading-and-importing-data">Reading and Importing Data</h2>
+<h3 id="from-csvs">From CSVs</h3>
+<p>It is relatively straightforward to be reading data from CSVs. One can use <code>pd.read_csv('path_to_csv.csv')</code> in order to read from a file. </p>
+<ol>
+<li><strong>No column labels</strong>: If the data does not have column labels, <code>pd.read_csv('path_to_csv.csv', header = None)</code> will allow it to read data without it.</li>
+<li><strong>External column names</strong>: External column names can be added to the data frame using the names argument, <code>pd.read_csv('path_to_csv.csv', header = None, names = list_of_names)</code></li>
+<li>
+<p><strong>Null value declaration</strong>: If our data uses any other convention than <code>NaN</code> for declaring null values in it, we can explicitly define it, by setting the <code>na_values</code> attritbute to that character <code>pd.read_csv('path_to_csv.csv', na_values =  ['-1'])</code></p>
+<p>This can also be done if there are more than one kinds of <code>NaN</code> values present in the dataset using a list of values as shown in <code>pd.read_csv('path.csv', na_values =  ['-1', '999'])</code> or using a dictionary as shown <code>pd.read_csv('path.csv', na_values =  {col1: '-1', col2: '999'})</code> if there are separate <code>NaN</code> characters in separate columns.
+4. <strong>Assigning row labels</strong>: In case the first column of the csv contains row labels for the data, then use <code>pd.read_csv('path_to_csv.csv', index_col=0)</code> for using the (row) labels for your dataframe.
+5. <strong>Date values</strong>: If year, month and date are in separate columns and need to be converged into one column, it can be done using <code>parse_dates</code> argument of the <code>read_csv()</code> function, e.g. <code>pd.read_csv('path_to_csv.csv', parse_dates = [[1, 2, 3]])</code> where columns with indices would contain year, month and day data. </p>
+<p>Alternatively, we can parse the date-time values using <code>parse_dates = True</code> which would then convert all the dates that are ISO 8601 compatible (yyyy-mm-dd hh:mm:ss), into appropriate date structure. </p>
+</li>
+<li>
+<p><strong>Handling comments</strong>: If the file contains comments within the data, they can be distinguished using the delimiter passed to the <code>comment</code> argument as shown in <code>pd.read_csv('path_to_csv.csv', comment='#')</code></p>
+</li>
+<li><strong>Delimiter</strong>: The delimiter in while reading a csv to a Pandas DataFrame object can be set using <code>sep</code> argument</li>
+<li><strong>Skipping rows</strong>: Rows can be skipped while reading a csv file by using <code>skiprows</code> argument in combination with <code>header</code> argument.</li>
+<li><strong>Skipping footer</strong>: Rows at the end of the file can be skipped using the <code>skipfooter = n</code> argument. This would skip the last <code>n</code> rows of the file. 
+    &gt; <strong>NOTE</strong>: The <code>skipfooter</code> argument doesn't work with the default C Engine so we need to specify the <code>engine = python</code> when setting this parameter.</li>
+</ol>
+<h4 id="chunkwise-loading">Chunkwise loading</h4>
+<p>In case of large datasets, data can be loaded and processed in chunks. It can be done with the help of <code>for</code> loop as in <code>for chunk in pd.read_csv('path_to_csv.csv', chunksize = 1000)</code>.</p>
+<h4 id="globbing">Globbing</h4>
+<p>The process of looking for file names with specific patterns, and loading them is called <strong>globbing</strong>. </p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">glob</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="s1">&#39;*.csv&#39;</span>
+<span class="n">csv_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
+</code></pre></div>
+<p>The code above, would return a list of files names, called <code>csv_files</code>. Then we can loop over this list to load all data frames. <em>Concatenation</em> can be used for merging all the datasets into one single dataset if required. </p>
+<h3 id="from-urls">From URLs</h3>
+<p>Importing a csv from a web URL can be done with the <strong>UrlLib</strong> package as follows</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">urlretrieve</span>
+
+<span class="n">urlretrieve</span><span class="p">(</span><span class="s1">&#39;http://onlinefilepath&#39;</span><span class="p">,</span> <span class="s1">&#39;local_file_path.csv&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>And then proceed with <code>read_csv()</code> function as usual.</p>
+<h3 id="from-excel">From Excel</h3>
+<ol>
+<li><strong>Reading a file</strong>: A simple read operation over an Excel Spreadsheet can be executed by using <code>x = pd.ExcelFile('filepath.xlsx')</code>. </li>
+<li><strong>Listing sheets</strong>: There can be multiple sheets involved in any particular file and they can be listed by using the <code>sheet_names</code> attribute as <code>print(x.sheet_names)</code></li>
+<li><strong>Reading a particular sheet</strong>: It is done by passing the sheet name to the <code>parse()</code> method as shown in <code>df_sheet = x.parse('sheet1')</code></li>
+<li><strong>Custom Headers</strong>: One can define custom headers while parsing from an excel sheet by using the <code>names()</code> argument.</li>
+</ol>
+<h3 id="from-hdf5-hierarchical-data-format-version5">From HDF5 (Hierarchical Data Format version5)</h3>
+<p>This is data format commonly used for storing large quantities of numerical data in Python. This is done using the following code segment</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">h5py</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">h5py</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="s2">&quot;path_to_file.hdf5&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p>You can explore the <code>data</code> object so obtained by using code similar to that required to explore a dictionary. </p>
+<h3 id="from-pickles">From Pickles</h3>
+<div class="highlight"><pre><span></span><code><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;file_path.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;rb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="from-sql">From SQL</h3>
+<ol>
+<li>
+<p><strong>Creating a Database engine</strong></p>
+<p><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sqlalchemy</span> <span class="kn">import</span> <span class="n">create_engine</span>
+<span class="n">engine</span> <span class="o">=</span> <span class="n">create_engine</span><span class="p">(</span><span class="s2">&quot;path to sql db connector&quot;</span><span class="p">)</span> 
+</code></pre></div>
+2. <strong>List Tables</strong>: This can be done using <code>engine.table_names()</code> method of <strong>engine</strong> object.
+3. <strong>Connecting to the engine</strong>: This is done using the <code>connect()</code> method available with every sqlalchemy <code>engine</code> object.
+4. <strong>Querying</strong>: There are two ways to query an SQL database and they are as follows: 
+1. The first one takes all of the above methods and works as follows:</p>
+<pre><code>```python
+con = engine.connect()
+results = con.execute("SELECT * FROM table_name")
+df = pd.DataFrame(results.fetchall())
+df.columns = results.keys()
+con.close()
+```
+
+This syntax is very similar to the **PHP** syntax for this operation. We create a connection, then execute the query and get returned a results binary object. We then use `fetchall()` method to convert it to a flat structure and store it in a pandas dataframe. Finally, we add the column names to the dataframe that we created and close the connection.
+</code></pre>
+<ol>
+<li>
+<p>The second method is much more concise and works just fine. It harnesses the power of Pandas library and works as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_sql_query</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM table_name&quot;</span><span class="p">,</span> <span class="n">engine</span><span class="p">)</span>
+</code></pre></div>
+<p>This single line of code then executes the command and returns the results in form of a DataFrame.</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Fetch fewer rows</strong>: Sometimes the SQL query that we execute might return humongous results, then we can use the <code>fetchmany()</code> function with the <code>size</code> argument over the <code>results</code> object in order to fetch a certain number of rows instead of all.</p>
+</li>
+</ol>
+<h2 id="exporting-data">Exporting Data</h2>
+<ol>
+<li><strong>csv</strong>: The method <code>to_csv()</code> for every DataFrame object allows us to export it to any file that we desire. It works as <code>pd_df.to_csv('filename.csv')</code>.</li>
+<li><strong>Excel</strong>: The method <code>to_excel()</code> for every DataFrame object allows us to export it to an excel spreadsheet file that we desire. It works as <code>pd_df.to_csv('filename.xlsx')</code>.</li>
+<li><strong>Numpy array</strong>: Any Pandas DataFrame can be converted into a Numpy array object using <code>values</code> attribute of every pandas dataframe object. </li>
+</ol>
+<h2 id="selecting-and-index-data">Selecting and Index Data</h2>
+<h3 id="column-selection">Column Selection</h3>
+<p>A column in a dataframe <code>df</code> may easily be selected using the syntax <code>df["columnName"]</code>. </p>
+<blockquote>
+<p><strong>NOTE:</strong> The returned object from the code above is <strong>NOT</strong> a dataframe but an object of the type series. This may lead to unexpected results and therefore this method is not recommended.</p>
+</blockquote>
+<p>There are two fixes for the problem mentioned above:</p>
+<ol>
+<li>The fix for the problem mentioned above is to use double square brackets like <code>df[["columnName"]]</code> for selecting the column. This would return a dataframe instead of a <strong>series</strong> as was the case in the method above. </li>
+<li>Use the <code>values</code> attribute for any <strong>Series</strong> object in order to retrieve the numerical values involved in form of a <strong>Numpy</strong> array.</li>
+</ol>
+<h3 id="slicing-for-row-selection">Slicing for Row Selection</h3>
+<p>It is uncommon to use regular square brackets for row selection but it can be done using <code>df[1:5]</code> which would return the rows with indices 1 through 4 (because as always, the last index would not be included).</p>
+<p>If alternative slicing methods are required then it can be achieved as <code>pd_df[::3,:]</code> would select every third row of the DataFrame.</p>
+<h3 id="loc-and-iloc">Loc and iLoc</h3>
+<p>These are the two most commonly used methods (of Pandas Data Frame objects) for selecting or subsetting data. The <strong>loc</strong> technique operates on <strong>labels</strong> and the <strong>iloc</strong> technique relies on <strong>integer positions</strong>.</p>
+<ol>
+<li>
+<p><strong>loc</strong>: This method allows us to select certain rows based on labels as follows <code>df.loc[["row_label1", "row_label2"]]</code> would select the rows with these two labels. </p>
+<p>One trick for range of slicing is to use <code>df.loc[["row_label2", "row_label1":-1]]</code> for reverse slicing. It would select rows from <code>row_label1</code> to <code>row_label2</code> but in reverse order.</p>
+<blockquote>
+<p><strong>Note:</strong> The use of <code>[[ ]]</code> is still necessary for making sure that the returned object is indeed a Pandas DataFrame in order to avoid any inconsistencies.</p>
+<p><strong>WARNING</strong>: Unlike conventional slicing (with numbers) slicing with <code>loc</code> using <code>'column_name_1':'column_name_2'</code> would include <code>column_name_2</code> in the resulting object. This is different from the index based slicing as that ignores the last index.</p>
+</blockquote>
+<p>It can be further extended to include only specific columns using a comma, as in <code>df.loc[["row_label1", "row_label2"], ["column_label1", "column_label2"]]</code>. This query would only return the columns with labels <strong>column_label1</strong> and <strong>column_label2</strong>.</p>
+</li>
+<li>
+<p><strong>iloc</strong>: Everything remains the same except that indices are used instead of labels.</p>
+</li>
+</ol>
+<h3 id="filtering">Filtering</h3>
+<ol>
+<li><strong>any and all</strong>: <code>any()</code> or <code>all()</code> methods are helpful in filtering the columns that have certain properties. They're usually used in combination with <code>isnull()</code> or <code>notnull()</code> methods.</li>
+<li><strong>Drop na</strong>: The <code>dropna()</code> method can be used on data frames to filter out rows with any or all na values based on the argument <code>how='any'</code> or <code>how='all'</code>.</li>
+</ol>
+<h3 id="iterations">Iterations</h3>
+<h4 id="columns">Columns</h4>
+<p>A basic <code>for</code> loop would result in iteration over column names. For instance, </p>
+<div class="highlight"><pre><span></span><code>for i in pd_df:
+    print(i)
+</code></pre></div>
+<p>would simply print the columns names that exist in the pandas dataframe <code>pd_df</code>.</p>
+<h4 id="rows">Rows</h4>
+<p>The rows need to be iterated over using the method <code>iterrows</code> of the pandas dataframe object that we are trying to access.</p>
+<div class="highlight"><pre><span></span><code>for lab, row in pd_df.iterrows():
+    print(lab)
+    print(row)
+</code></pre></div>
+<p>would then print, first the label, and then the contents of each row as a <strong>Series</strong> object.</p>
+<h2 id="manipulating-dataframes">Manipulating Dataframes</h2>
+<blockquote>
+<p>NOT COMPLETE: would need to visit more websites and research materials to complete manipulatio</p>
+</blockquote>
+<ol>
+<li>
+<p><strong>Adding a new column</strong></p>
+<ol>
+<li>
+<p><strong>Single Value(loc)</strong>: The operator <code>loc</code> can be used to add a new column to an existing dataframe. </p>
+<p><div class="highlight"><pre><span></span><code><span class="n">pd_df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s2">&quot;new_column&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+</code></pre></div>
+should create a new column names <code>new_column</code> in the <code>pd_df</code> dataframe with the value <code>2</code> on all rows.
+    2. <strong>Mutation(apply)</strong>: <code>pd_df["new_column"] = pd_df["old_column"].apply(len)</code> would add a new column with the length of values present in currently existing <code>old_column</code>.</p>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Tidying Data</strong></p>
+<ol>
+<li>
+<p><strong>Melting Dataframes</strong>: If columns contain values instead of variables, then we would need to use the <code>melt()</code> function. It can be used as </p>
+<div class="highlight"><pre><span></span><code><span class="n">pd</span><span class="o">.</span><span class="n">melt</span><span class="p">(</span>    <span class="n">frame</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> 
+            <span class="n">id_vars</span> <span class="o">=</span> <span class="s1">&#39;identifier_column&#39;</span><span class="p">,</span> 
+            <span class="n">value_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;column1&#39;</span><span class="p">,</span> <span class="s1">&#39;column2&#39;</span><span class="p">],</span>
+            <span class="n">var_name</span> <span class="o">=</span> <span class="s1">&#39;new_key_column_name&#39;</span><span class="p">,</span>
+            <span class="n">value_name</span> <span class="o">=</span> <span class="s1">&#39;new_value_column_name&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>where <code>id_vars</code> is the column/set of columns that contain the ID, and <code>value_vars</code> are the columns that need to be merged.</p>
+</li>
+<li>
+<p><strong>Pivoting Data</strong>: It's the opposite process of melting data. It can be used to change a column into multiple columns as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="n">pd</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span>   <span class="n">frame</span> <span class="o">=</span> <span class="n">df</span><span class="p">,</span> 
+            <span class="n">index</span> <span class="o">=</span> <span class="s1">&#39;index_column&#39;</span><span class="p">,</span> 
+            <span class="n">columns</span> <span class="o">=</span> <span class="s1">&#39;key_column&#39;</span><span class="p">,</span>
+            <span class="n">values</span> <span class="o">=</span> <span class="s1">&#39;value_column&#39;</span><span class="p">)</span>    
+</code></pre></div>
+<p>This would work just fine if we're dealing with perfect data, i.e. there are no duplicates. If there are duplicates though, then we would need to use the <code>pivot_table()</code> method in order to deal with them. It is done with one additional parameter, and with , as shown below</p>
+<div class="highlight"><pre><span></span><code><span class="n">df</span><span class="o">.</span><span class="n">pivot_table</span><span class="p">(</span> <span class="n">index</span> <span class="o">=</span> <span class="s1">&#39;index_column&#39;</span><span class="p">,</span> 
+                    <span class="n">columns</span> <span class="o">=</span> <span class="s1">&#39;key_column&#39;</span><span class="p">,</span>
+                    <span class="n">values</span> <span class="o">=</span> <span class="s1">&#39;value_column&#39;</span><span class="p">,</span>
+                    <span class="n">aggfunction</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>  
+</code></pre></div>
+<p>where we are telling Pandas to mean the duplicate numeric values using the <code>aggfunction</code> attribute. </p>
+<blockquote>
+<p><code>reset_index()</code> method is used on the data frames that have been pivoted in order to flatten them2</p>
+</blockquote>
+</li>
+<li>
+<p><strong>Concatenating Data</strong>: A list of dataframes can be passed to the <code>pd.concat()</code> function for concatenating data.</p>
+<p>The <code>axis = 1</code> argument can be used for <strong>column wise concatenation</strong>.</p>
+<blockquote>
+<p><strong>Note:</strong> We need to reset the index labels by passing the <code>ignore_index=True</code> argument to the <code>pd.concat()</code> function so that there are no duplicate indices in order to avoid using <code>reset_index()</code> method later.</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Merging Data</strong></p>
+<p>We can use the Pandas equivalent of <strong>join</strong> to merge two dataframes as follows</p>
+<div class="highlight"><pre><span></span><code><span class="n">pd</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span>       <span class="n">left</span> <span class="o">=</span> <span class="n">left_df</span><span class="p">,</span> <span class="n">right</span> <span class="o">=</span> <span class="n">right_df</span><span class="p">,</span>
+                <span class="n">on</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> 
+                <span class="n">left_on</span> <span class="o">=</span> <span class="s1">&#39;left_df_column_name&#39;</span><span class="p">,</span> 
+                <span class="n">right_on</span> <span class="o">=</span> <span class="s1">&#39;right_df_column_name&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>If the column name is same on both left and right dataframes, then only the <code>on</code> parameter can be specified in the function above and the other factors will be redundant. </p>
+<p>There are multiple kinds of merges that can happen in Pandas:</p>
+<ol>
+<li><strong>One to One</strong>: Both the keys take a value only 1 time on both sides</li>
+<li><strong>Many to One/ One to Many</strong>: This merge happens when there are more than one duplicates on either of the tables. In this case, the value from the other key will be duplicated to fill in the missing repition.</li>
+</ol>
+</li>
+<li>
+<p><strong>Data Type Cleaning</strong></p>
+<p>We can observe the datatypes of various columns by viewing the <code>dtypes</code> attribute of the dataframe that we want to check these details for.</p>
+<ol>
+<li><strong>Converting Data Types</strong>: The data types can be converted using the <code>astype()</code> method of any column. </li>
+<li><strong>Convert to categorical column</strong>: We would often want to convert the column type to a categorical variable, we can pass the <code>'category'</code> argument to the <code>astype()</code> method of any column to convert it into a categorical column.</li>
+<li><strong>Convert to Numeric</strong>: If there is a column that should be of numeric type but is not, because of mistreated data, or erroneous characters in the data, we can use the <code>pd.to_numeric(df['column_name'])</code> function and pass it the additional argument <code>errors = 'coerce'</code> in order to convert all that erroneous data to <code>NaN</code> with ease.</li>
+<li><strong>Drop NA</strong>: If there are really few data points that have missing values in them, we can lose them with the <code>dropna()</code> method. </li>
+<li><strong>Recode Missing Values</strong>: We can customize the missing values using the <code>fillna('missing_value_placeholder')</code> method of every data frame object and the columns. </li>
+<li><strong>String Cleaning</strong>: The <code>re</code> library for regular expressions gives us a neat way to do string manipulations. We can formulate regular expression formalue like <code>x = re.compile('\d{3}-\d{3}-\d{4}')</code>. This would create a new regex object called <code>x</code> which has a method <code>match()</code>. We can pass any string to this <code>match()</code> method to match it with our regular expression and it returns a boolean <code>True</code> if the string matches. </li>
+<li><strong>Duplicate Data</strong>: There may be mulitple rows where redundant partial or complete row information is stored and these may be sorted out by using the <code>drop_duplicates()</code> methods of the data frame object.</li>
+</ol>
+</li>
+<li>
+<p><strong>Vectorized Operations</strong>: Whenever possible, it is recommended to use vectorized computations rather than going for custom solutions. </p>
+<ol>
+<li><strong>Operating on Strings</strong>: There are vectorized methods in the <code>str</code> attribute of every dataframe column that contains strings. These functions enable us to do quick vectorized transformations on the df. </li>
+<li><strong>Map Method</strong>: There are often times when the <code>str</code> or other vectorized attributes will not be present. In such cases the <code>map()</code> method can be used for mapping operation succinctly. </li>
+</ol>
+</li>
+<li>
+<p><strong>Assigning Index</strong>: We can designate a column, or any other Numpy array of the same length to be the index by assigning it to the <code>df.index</code> attribute. </p>
+<ol>
+<li><strong>Index Name</strong>: Index by default, won't have name associated with it, but one can assign a name to the index by assigning it to the attribute <code>df.index.name</code>. The similar operation can be carried for assigning an index name to the column names using the <code>df.columns.name</code> attribute.</li>
+<li><strong>Using Tuples as Index</strong>: Often we would need to set two or more columns as index (much like composite keys in SQL). This can be done using Tuples. They list of columns that we need to be set as the composite index of a dataframe can be passed to the <code>set_index(["composite_key_column_1", "composite_key_column_2"])</code> to achieve this. It is called the <strong>MultiIndex</strong>.</li>
+<li>
+<p><strong>Sorting Index</strong>: If we are using a <strong>Multiindex</strong> as shown above, we can also use the <code>sort_index()</code> method to sort the index and display it in a more organized manner. </p>
+<blockquote>
+<p>This allows for <strong>fancy indexing</strong>, i.e. calling <code>df.loc[(["index_1_low" : "index_1_high"], "index_2"), :]</code> would select all the columns for rows that belong in the range provided for <code>index_1</code> and all sub rows belonging to <code>index_2</code>. </p>
+<p>The <code>slice()</code> function must be used for slicing both indexes.
+    4.  <strong>Stacking and Unstacking Index</strong>: We might want to remove some of the indexes from the multi level indexes to be columns. To do this, we use the method <code>unstack()</code> with the <code>level="index_name_to_remove"</code>. This will give us a hierarchical data frame and this effect can be reversed using the <code>stack()</code> method in the same format.
+    5. <strong>Swapping Index Levels</strong>: The index levels can be swapped using the method <code>swaplevel(0, 1)</code> on any dataframe. This would essentially exchange the hierarchical arrangement of indices and running <code>sort_index()</code> right after it would do the rest.</p>
+</blockquote>
+</li>
+</ol>
+</li>
+<li>
+<p><strong>Aggregation/Reduction</strong>: The <code>groupby()</code> method is the Python equivalent of R's <code>aggregate()</code> method. It allows us to create virtual groups within the dataframe. It is usually chained together with other aggregation functions like <code>sum()</code>, <code>count()</code>, <code>unique()</code> etc. to produce meaningful results. We can use a typical grouping operation as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="n">titanic</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;pclass&#39;</span><span class="p">,</span> <span class="s1">&#39;sex&#39;</span><span class="p">])[</span><span class="s1">&#39;survived&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</code></pre></div>
+<p>There is also the option of finding out multiple aggregation details on the grouped dataframe:
+1. <strong>Multiple Aggregations</strong>: We can use <code>titanic.groupby('pclass').agg(['mean', 'sum'])</code> to compute multiple aggregation values at once.
+2. <strong>Custom Aggregations</strong>: We can pass custom functions as arguments to <code>agg()</code> method that would take <code>Series</code>  objects as inputs and produce results from them. When used, they would receive as inputs multiple <code>Series</code> objects (one for each group) and would produce grouped results like other functions.
+3. <strong>Differnet Agg on Different Columns</strong>: We can pass a <code>dictionary</code> object to <code>agg()</code> method, as an argument, which would contain column names as keys and corresponding aggregation functions to apply as values. This allows us to compute different statistics for the same grouping of objects, upon different columns.</p>
+</li>
+<li>
+<p><strong>Transformation</strong>: Transformation functions are used to transform one or more columns after they have been grouped and is usually chained after the <code>groupby()</code> method as <code>transform(transformation_function)</code>. This transformation method passes the Series to <code>transform_function()</code> which could be a user defined function or a builtin one, which then returns a transformed series of a conforming size. </p>
+</li>
+<li><strong>Grouping and Filtering</strong>: We can use the dictionary object created by <code>groupby()</code> method to loop over and therefore filter only the rows of interest.</li>
+<li><strong>Sorting</strong>: We can sort the values in any column by using the <code>sort_values(ascending = False)</code> method available for columns of all dataframe objects.</li>
+<li><strong>Matrix Operations</strong>: Direct matrix operations will not work on Dataframes but <code>pandas.core.frame.DataFrame</code> object comes with an <code>as_matrix()</code> method available to each object for converting it readily into a Numpy 2D Array. This will only work for DataFrames with only numerical values though. There is a crucial difference between <strong>Numpy 2D Arrays</strong> and <strong>Pandas' DataFrames</strong> and that is, <code>X[0]</code> for a Numpy 2D Array returns the <strong><em>0th row</em></strong> while accessing a DataFrame <strong><em>X[0]</em></strong> would return the <strong><em>0th column</em></strong> of the DataFrame.</li>
+<li><strong>Mathematical Operations</strong>: There are various mathematical operations available for our use.<ol>
+<li><strong>pct_change()</strong>: This method can used to detect percentage change over a particular column or aggregation values.</li>
+<li><strong>add()</strong>: This method can be used to add two Series with corresponding row indices as <code>a.add(b)</code>. This would add the series <code>a</code> and <code>b</code>. However, if there are non matching indices, i.e. an index in <code>a</code> does not have any corresponding index in <code>b</code>, then this could return an <code>NaN</code> value. We can change this by changing the default non existent value by passing the argument <code>fill_value</code> into the <code>add()</code> method. This method is chainable so more than one Series can be added in a single line. </li>
+</ol>
+</li>
+</ol>
+<h2 id="exploring-data">Exploring Data</h2>
+<ol>
+<li><strong>Dimensions</strong>: The <code>shape</code> attribute of any DataFrame can be used to check the dimensions.</li>
+<li><strong>Column Names</strong>: The <code>columns</code> attribute of a DataFrame returns the names of all the columns.</li>
+<li><strong>Indices</strong>: The atrributes <code>columns</code> and <code>index</code> can be used to retrieve the columns' and rows' index of a DataFrame.</li>
+<li><strong>Column Details</strong>: Much like the <code>str</code> function in R, <code>info()</code> method can be used over any pandas DataFrame object in order to retrieve meaningful insight on columns. It returns the name of the column and the number of Non Null values preent in the data column.</li>
+<li><strong>Statistical Summary</strong>: Statistical summaries for pandas DataFrames can be quickly generated using the <code>describe()</code> method on any pandas DataFrame.</li>
+<li><strong>Interquantile range (IQR)</strong>: Quantile ranges are useful when exploring a dataset and it can easily be determined by using <code>quantile()</code> method of Pandas dataframes. For instance, <code>pd_df.quantile([0.25, 0.75])</code> would return two values for each column in the dataset and half the data for those columns would lie between those two values. </li>
+<li><strong>Range</strong>: The range can be calculated using the <code>min()</code> and <code>max()</code> methods on any DataFrame.</li>
+<li><strong>Median</strong>: The <code>median()</code> method can be used for finding out the median of any given dataset. </li>
+<li><strong>Standard deviation</strong>: The method <code>std()</code> can be used for finding out the standard deviation for any given column.</li>
+<li><strong>Unique objects</strong>: Unique categories in any categorical column can be found using the <code>unique()</code> method.</li>
+<li><strong>Frequency Count</strong>: The frequency  of factors in a column containing factors by using the <code>value_counts()</code> method on that column. Optionally, we could specify the <code>dropna</code> argument to this method with a Boolean Value specifying whether or not to involve null values. </li>
+<li><strong>Data Type</strong>: We can explore the data type for any column that we want to, by having a look at the values of the attribute <code>dtypes</code> for each column in data frame.</li>
+<li><strong>Index of Max</strong>: The <code>idxmax()</code> and <code>idxmin()</code> methods allow us to find the row or column labels where the maximum or minimum values are located with the help of <code>axis = 'columns'</code> for the column labels, and these methods default to <code>min()</code> so we won't have to specify anything there. </li>
+<li><strong>Indexes of Non NULL Values</strong>: One can get the indices of non null values by using the <code>notnull()</code> method available for Series objects in Pandas.</li>
+</ol>
+<h2 id="time-series-with-pandas">Time Series with Pandas</h2>
+<ol>
+<li>
+<p><strong>Slicing on the basis of time</strong>: Interesting selections can be done on date time indices, using selection operators like <code>pd_df.loc['2017-01-22':'2018-01-02']</code> to select the values for that 1 month.</p>
+</li>
+<li>
+<p><strong>Reindexing</strong>: Any time series can be reindexed using the index of another time series by using the syntax <code>time_s2.reindex(time_s1.index)</code></p>
+</li>
+<li><strong>Forward Filling of Null Values</strong>: Null values in a time series can be forward filled using <code>time_series.reindex(new_index, method = "ffill")</code></li>
+<li>
+<p><strong>Resampling</strong>: There are two kinds of sampling that can be done with time series in Pandas dataframes:</p>
+<ol>
+<li><strong>Downlsampling</strong>: Reduce datetimes to lower frequency, i.e. from daily to weekly etc. </li>
+<li><strong>Upsampling</strong>: Increasing the times to higher frequency, i.e. from daily to hourly etc.</li>
+</ol>
+<p>There are multiple parameters that we can pass to <code>resample()</code> method for allowing us to derive quick statistics from a time series. For instance, <code>pd_ts.resample('D').mean()</code> would allow us to have daily averages of all numeric columns of the time series dataframe.</p>
+<table>
+<thead>
+<tr>
+<th>Code</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>min</code>, <code>T</code></td>
+<td>Minute</td>
+</tr>
+<tr>
+<td><code>H</code></td>
+<td>Hour</td>
+</tr>
+<tr>
+<td><code>D</code></td>
+<td>Day</td>
+</tr>
+<tr>
+<td><code>B</code></td>
+<td>Business Day</td>
+</tr>
+<tr>
+<td><code>W</code></td>
+<td>Week</td>
+</tr>
+<tr>
+<td><code>M</code></td>
+<td>Month</td>
+</tr>
+<tr>
+<td><code>Q</code></td>
+<td>Quarter</td>
+</tr>
+<tr>
+<td><code>Y</code></td>
+<td>Year</td>
+</tr>
+</tbody>
+</table>
+<p>Numeric values can be used as prefixes to the parameters above in order to increase or decrease the sampling size. For instance, <code>2W</code> can be used for downsampling for 2 weeks in <code>pd_ts.resample('2W').mean()</code></p>
+<blockquote>
+<p>The <code>ffill()</code> and <code>bfill()</code> methods can be used for filling in, rolling values as in <code>pd_ts.resample('2H').ffill()</code>.</p>
+</blockquote>
+<p><strong>Interpolation</strong>: It can be carried out as follows:</p>
+<div class="highlight"><pre><span></span><code><span class="n">pd_ts</span><span class="o">.</span><span class="n">resample</span><span class="p">(</span><span class="s1">&#39;A&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">first</span><span class="p">()</span><span class="o">.</span><span class="n">interpolate</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>This would resample and fill in the gaps between any two data points with <strong>NaN</strong> values. Then the <code>interpolate()</code> method would interpolate the values. </p>
+</li>
+<li>
+<p><strong>Datetime Methods</strong>: These methods allow us to slice and select specific date time attributes from the data. </p>
+<ol>
+<li><strong>Select hours</strong>: For instance <code>pd_ts['date'].dt.hour</code> would extract and return the <em>hour</em> where <strong>0</strong> is 12AM and <strong>23</strong> is 12PM.</li>
+<li><strong>Timezone</strong>: We can <strong>define</strong> the timezone for a particular column by using <code>pd_ts['date'].dt.tz_localize('US/Central')</code>. On the other hand, easy <strong>conversions</strong> can be made, using the method <code>tz_convert()</code> that is specifically used for converting dates and times in one timezone to another.</li>
+<li></li>
+</ol>
+</li>
+</ol>
+<h3 id="moving-averages">Moving Averages</h3>
+<p>We can calculate moving averages, that allows us to focus on long term trends instead of being stuck in short term fluctuations. We do so by using the <code>rolling()</code> method as shown in <code>time_series.rolling(window=24).mean()</code> which would compute <strong>new values for each point</strong> but it will still be hourly data. This would instead set the value of that point as an average of trailing 24 datapoints, hence making it smoother. </p>
+<div class="highlight"><pre><span></span><code>&quot;&quot;&quot;
+for key in keys[&#39;order&#39;]:
+  key_weight = keys[&#39;weights&#39;][key] # Weight of the key
+  key_data = keys[&#39;data&#39;][key]
+  if key_data[&#39;type&#39;] == &quot;singular&quot;:
+    print(&quot;Jacuzzi&quot;)
+  else:
+    for section in key_data[&#39;order&#39;]: 
+      section_weight = key_data[&#39;weights&#39;][section]
+      section_data = key_data[&#39;data&#39;][section]
+
+      for unit in section_data:
+        user_df[key+&#39;_&#39;+section+&#39;_&#39;+unit] = user_data_raw[section_data[unit][&#39;user&#39;]].notnull().astype(int)
+
+
+print(user_df.columns)
+&quot;&quot;&quot;
+</code></pre></div>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2024-05-01 15:52:20 UTC</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-custom">2024-05-01 15:52:20 UTC</span>
+  </span>
+
+    
+    
+      
+  
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Contributors">
+      
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 4a4 4 0 0 1 4 4 4 4 0 0 1-4 4 4 4 0 0 1-4-4 4 4 0 0 1 4-4m0 10c4.42 0 8 1.79 8 4v2H4v-2c0-2.21 3.58-4 8-4Z"/></svg>
+      
+    </span>
+    <nav>
+      
+        <a href="mailto:44643853+gamaranathareddy@users.noreply.github.com">FullstackQuickReference</a>
+    </nav>
+  </span>
+
+    
+    
+  </aside>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.expand", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.dd8806f2.min.js"></script>
+      
+    
+  </body>
+</html>
